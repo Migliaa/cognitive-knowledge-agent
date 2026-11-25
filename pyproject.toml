@@ -1,0 +1,28 @@
+[project]
+name = "cognitive-agent"
+version = "0.1.0"
+description = "Cognitive knowledge agent"
+requires-python = ">=3.12"
+dependencies = ["httpx"]
+
+[dependency-groups]
+dev = ["pytest", "ruff", "mypy"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "BLE", "ERA", "SIM", "FIX", "TD", "UP"]
+
+[tool.mypy]
+strict = true
+warn_unused_ignores = true
+mypy_path = "src"
+packages = ["cognitive_agent"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+addopts = "-ra"

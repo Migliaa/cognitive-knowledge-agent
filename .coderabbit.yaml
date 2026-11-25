@@ -1,0 +1,40 @@
+# yaml-language-server: $schema=https://coderabbit.ai/integrations/schema.v2.json
+language: en-US
+reviews:
+  profile: assertive
+  request_changes_workflow: true
+  high_level_summary: true
+  poem: false
+  auto_review:
+    enabled: true
+    drafts: false
+    base_branches:
+      - main
+  path_instructions:
+    - path: "**/*.py"
+      instructions: |
+        Review against AGENTS.md. Flag any `# noqa`, `# type: ignore`, sleep-based waiting,
+        broad exception swallowing, hack/workaround/temporary comments, and comment density
+        above 5%. Flag weakened lint, type, or test configuration.
+    - path: "src/**"
+      instructions: |
+        The change must match a spec in specs/features/<name>/ (plan.md, requirements.md,
+        validation.md) and respect specs/mission.md and specs/tech-stack.md. Flag behavior not
+        covered by a requirement.
+    - path: "tests/**"
+      instructions: |
+        Tests must assert behavior from validation.md. Flag skipped, xfail, or tautological tests.
+  tools:
+    ruff:
+      enabled: true
+    gitleaks:
+      enabled: true
+chat:
+  auto_reply: true
+knowledge_base:
+  code_guidelines:
+    enabled: true
+    filePatterns:
+      - AGENTS.md
+      - specs/mission.md
+      - specs/tech-stack.md
