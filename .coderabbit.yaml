@@ -20,7 +20,7 @@ reviews:
       instructions: |
         The change must match a spec in specs/features/<name>/ (plan.md, requirements.md,
         validation.md) and respect specs/mission.md and specs/tech-stack.md. Flag behavior not
-        covered by a requirement.
+        covered by a requirement or outside the current milestone in specs/roadmap.md.
     - path: "tests/**"
       instructions: |
         Tests must assert behavior from validation.md. Flag skipped, xfail, or tautological tests.
@@ -38,3 +38,4 @@ knowledge_base:
       - AGENTS.md
       - specs/mission.md
       - specs/tech-stack.md
+      - specs/roadmap.md
