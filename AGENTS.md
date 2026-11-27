@@ -1,7 +1,7 @@
 # AGENTS.md
 
-Constraints are enforced by tooling, not prose. If a rule below is violated, a hook or linter
-fails. Fix the cause; never route around the check.
+Constraints are enforced by tooling where a check exists; rules without one still apply. When a
+check fails, fix the cause; never route around it.
 
 ## Commands
 
@@ -14,6 +14,7 @@ fails. Fix the cause; never route around the check.
 
 - `src/cognitive_agent/{ingestion,processing,agent}/` application code
 - `tests/` pytest suite
+- `evals/` evaluation suite, created in M4; the PR that creates it adds it to the mypy config
 - `specs/` constitution (`mission.md`, `tech-stack.md`, `roadmap.md`) and `specs/features/<name>/`
 - `docs/adr/` architecture decision records
 - `.claude/` hooks, skills, review agents
@@ -47,8 +48,9 @@ rule, a mypy setting, a test, or a hook in `.claude/hooks/`, then commit it with
 5. Implement against `validation.md`; every acceptance criterion maps to a test or an artifact.
 6. Run `sdd-changelog` before merge.
 
-`.claude/hooks/enforce-sdd.py` blocks `src/` edits via `Edit`/`Write` only (not shell writes). It
-checks that spec files exist, not commit or approval; one complete spec unlocks all later features.
+`.claude/hooks/enforce-sdd.py` blocks `src/` edits on `main`/`master` or without constitution and
+spec files, via `Edit`/`Write` only (not shell writes). It checks that files exist, not commit or
+approval; one complete feature spec unlocks all later features.
 
 ## Review
 
