@@ -47,7 +47,8 @@ rule, a mypy setting, a test, or a hook in `.claude/hooks/`, then commit it with
 5. Implement against `validation.md`; every acceptance criterion maps to a test or an artifact.
 6. Run `sdd-changelog` before merge.
 
-Code under `src/` is blocked by `.claude/hooks/enforce-sdd.py` until steps 1-3 are done.
+`.claude/hooks/enforce-sdd.py` blocks `src/` edits via `Edit`/`Write` only (not shell writes). It
+checks that spec files exist, not commit or approval; one complete spec unlocks all later features.
 
 ## Review
 
