@@ -1,19 +1,24 @@
 # Roadmap
 
-Each PR has its own feature spec in `specs/features/<name>/`.
+Each MVP milestone is one pull request with its own feature spec in `specs/features/<name>/`.
+Milestone names are independent of GitHub issue and pull request numbers.
 
 ## MVP
 
-| PR | Scope | Location |
+| Milestone | Scope | Location |
 |---|---|---|
-| #1 | Deterministic client for the local ActivityWatch API, with session aggregation (issue #1) | `src/cognitive_agent/ingestion/` |
-| #2 | Content ingestion from `inbox/` and Notion, cleaning, hash deduplication, Qdrant storage and index rebuild from Markdown notes | `ingestion/`, `processing/` |
-| #3 | Curator agent on Azure AI Foundry SDK with RAG tool calling (create, update, discard) and CLI approval | `src/cognitive_agent/agent/` |
-| #4 | Evaluation suite of 20 to 25 synthetic edge cases | `evals/` |
+| M1 | Deterministic client for the local ActivityWatch API, with session aggregation (issue #1) | `src/cognitive_agent/ingestion/` |
+| M2 | Content ingestion from `inbox/` and Notion, cleaning and hash deduplication; Qdrant index of the curated Markdown notes, with index rebuild | `ingestion/`, `processing/` |
+| M3 | Curator agent on Azure AI Foundry SDK with RAG tool calling (create, update, discard) and CLI approval | `src/cognitive_agent/agent/` |
+| M4 | Evaluation suite of 20 to 25 synthetic edge cases | `evals/` |
 
-PR #1 is fully local and deterministic, and produces no report.
+M1 is fully local and deterministic, and produces no report.
 
-Pass thresholds for PR #4 are written in its spec before the first evaluation run.
+Only curated notes are indexed in Qdrant. Raw texts ingested in M2 are not indexed: they are
+cleaned and deduplicated for the curator. Embeddings are computed on Azure behind an interface
+that tests can replace.
+
+Pass thresholds for M4 are written in its spec before the first evaluation run.
 
 ## Phase 2 (out of MVP scope)
 

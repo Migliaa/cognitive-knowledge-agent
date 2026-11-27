@@ -36,15 +36,15 @@ A Personal Knowledge Curator (automated personal RAG) that:
 |---|---|---|
 | ActivityWatch events and anything derived from them | Never | Never |
 | Text of inbox files, Notion pages and curated notes | To Azure AI Foundry, for embeddings and curation | Never |
-| Embeddings and the Qdrant index | Computed on Azure, stored locally | Never |
+| Embeddings and the Qdrant index | Embeddings are computed on Azure; the index stays local | Never |
 | Evaluation cases | To Azure AI Foundry Evaluations | Yes, synthetic only |
 | Credentials | Only to the service that issued them | Never |
 
-Note content is therefore private from the repository but not local-only: all indexed text is sent
-to Azure. Content that must not reach a cloud service must not enter `inbox/` or the Notion sources.
+Note content is therefore private from the repository but not local-only: all text that is curated
+or indexed is sent to Azure. Content that must not reach a cloud service must not enter `inbox/` or the Notion sources.
 Logs, test fixtures and published evaluation reports contain no personal data.
 
 ## Source of truth
 
-Curated notes are local Markdown files, ignored by Git. The Qdrant index is derived from them and
-can be rebuilt at any time. Notion is a read-only source.
+Curated notes are local Markdown files in `notes/`, ignored by Git. The Qdrant index is derived
+only from them and can be rebuilt at any time. Notion is a read-only source.
