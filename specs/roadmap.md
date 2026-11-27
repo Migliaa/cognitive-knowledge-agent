@@ -25,3 +25,11 @@ Pass thresholds for PR #4 are written in its spec before the first evaluation ru
 - ActivityWatch as a passive context trigger: work in selected apps or pages (for example PDF,
   Notion, Gemini, IDE; selectable later) activates the curator to capture relevant information
   without manual highlighting, after a validity and correctness check
+
+### Open questions for Phase 2
+
+- Content capture: ActivityWatch records activity such as apps, window titles and, with its browser
+  extension, URLs, but not page text. Which component reads the content?
+- Privacy boundary: does text captured because of the trigger count as data derived from
+  ActivityWatch? `mission.md` forbids that data from leaving the machine, while curating the text
+  requires sending it to Azure.
