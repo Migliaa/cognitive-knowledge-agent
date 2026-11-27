@@ -6,7 +6,7 @@ __pycache__/
 .ruff_cache/
 .env
 .claude/settings.local.json
-local/
+/local/
 /inbox/
 /notes/
 /qdrant_data/

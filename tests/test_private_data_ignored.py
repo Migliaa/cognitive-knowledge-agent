@@ -45,7 +45,7 @@ def test_private_data_is_ignored(reviewed_rules_repository: Path, directory: str
 
 
 @pytest.mark.parametrize("parent", SOURCE_DIRECTORIES)
-@pytest.mark.parametrize("directory", PRIVATE_DIRECTORIES[:3])
+@pytest.mark.parametrize("directory", PRIVATE_DIRECTORIES)
 def test_same_named_source_directory_is_tracked(
     reviewed_rules_repository: Path, parent: str, directory: str
 ) -> None:
