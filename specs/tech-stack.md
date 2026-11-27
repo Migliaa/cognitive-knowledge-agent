@@ -11,7 +11,7 @@ A dependency not listed here needs an update to this file in the PR that adds it
 ## Sources
 
 - ActivityWatch local REST API, `http://localhost:5600/api/0/`
-- Local files in `inbox/`, ignored by Git
+- Local files in `inbox/` at the repository root, ignored by Git
 - Notion API, read-only
 
 Each source sits behind a common boundary so that new ones can be added without changing
@@ -19,9 +19,11 @@ processing or the agent.
 
 ## Storage
 
-- Curated notes: local Markdown files (source of truth)
-- Vector database: Qdrant in local on-disk mode, with a later path to Docker or Qdrant Cloud.
-  Moving to Qdrant Cloud would change the data boundaries in `mission.md`.
+- Curated notes: local Markdown files in `notes/` (source of truth)
+- Vector database: Qdrant in local on-disk mode, stored in `qdrant_data/`, with a later path to
+  Docker or Qdrant Cloud. Moving to Qdrant Cloud would change the data boundaries in `mission.md`.
+- `inbox/`, `notes/` and `qdrant_data/` sit at the repository root and are ignored by Git;
+  `tests/test_private_data_ignored.py` enforces it.
 
 ## AI
 

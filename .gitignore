@@ -7,3 +7,6 @@ __pycache__/
 .env
 .claude/settings.local.json
 local/
+/inbox/
+/notes/
+/qdrant_data/
